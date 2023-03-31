@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+form > h1{
+	text-align: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding:40px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  width: 500px;
+  border-radius: 5px; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+/* Style the form labels */
+
+form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Style the form inputs */
+
+#fullname, #contact, #email, #pass, #re-pass{
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+.gender{
+	margin-bottom: 16px;
+}
+
+/* Style the form submit button */
+
+form input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  justify-content: center; 
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Change the button color on hover */
+
+form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Style error messages */
+
