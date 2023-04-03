@@ -11,7 +11,7 @@
 <div class="formcontainer">
 	
 	
-	<form action="registration" method="post">
+	<form action="../Signup" method="post">
 		<h1>Create an account</h1>
 		<div class="fullname">
 			<label for="fullname">Fullname</label>

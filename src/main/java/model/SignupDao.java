@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class SignupDao {
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
-		String url ="jdbc:mysql://localhost/iic";
+		String url ="jdbc:mysql://localhost/ecommerce";
 		String username = "root";
 		String password = "";
 		Class.forName("com.mysql.jdbc.Driver");
@@ -25,7 +25,7 @@ public class SignupDao {
 		String message = "";
 		try {
 			Connection con = getConnection();
-			String query = "INSERT INTO employee(fullname,department,phone,address,gender) VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO user(fullname,phonenumber,email,gender,password) VALUES(?,?,?,?,?)";
 			PreparedStatement psmt = con.prepareStatement(query);
 
 			
@@ -53,43 +53,16 @@ public class SignupDao {
 		return message;
 	}
 	
-	public ResultSet fetchStudentRecord(){
-		try {
-			Connection con = getConnection();
-			String query = "select * from employee";
-			PreparedStatement st = con.prepareStatement(query);
-			ResultSet table = st.executeQuery();
-			return table;
-			
-			
-//			while(table.next()) {
-//				String id = table.getString(1);
-//				String name = table.getString(2);
-//				String gender = table.getString(3);
-//				String password = table.getString(4);
-//				
-//				System.out.println(id+" "+name+" "+gender+" "+password);
-//			}
-			
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-		
-		
-	}
 	
 	
-	public boolean checkLogin(String id, String fullname) {
+	public boolean checkLogin(String email, String password) {
 		boolean isValid = false;
 		try {
 			Connection con = getConnection();
-			String query = "select * from employee where id = ? and fullname = ?";
+			String query = "select * from user where email = ? and password = ?";
 			PreparedStatement st = con.prepareStatement(query);
-			st.setString(1, id);
-			st.setString(2, fullname);
+			st.setString(1, email);
+			st.setString(2, password);
 			ResultSet table = st.executeQuery();
 			
 			if(table.next()) {
