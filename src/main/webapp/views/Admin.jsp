@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home </title>
+<title>Admin Panel</title>
 </head>
 <body>
-	<h1>Home page <%= session.getAttribute("loggedInEmail") %> Login Succesfull</h1>
+	<h1>This is admin panel page</h1>
 </body>
 </html>

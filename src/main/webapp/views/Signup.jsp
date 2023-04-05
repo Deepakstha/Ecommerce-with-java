@@ -9,13 +9,17 @@
 </head>
 <body>
 <div class="formcontainer">
+
+<div class="message">
+<%@include file="../components/message.jsp" %>
+</div>
 	
 	
 	<form action="../Signup" method="post">
 		<h1>Create an account</h1>
 		<div class="fullname">
 			<label for="fullname">Fullname</label>
-			<input type="text" name="fullname" id="fullname" placeholder="Enter your first and last name"/>
+			<input type="text" name="fullname" id="fullname" placeholder="Enter your first and last name" required="required"/>
 		</div>
 		<div class="contact">
 			<label for="contact">Phone number</label>

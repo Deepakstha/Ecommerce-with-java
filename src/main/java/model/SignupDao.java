@@ -45,7 +45,7 @@ public class SignupDao {
 			 }
 			 
 			 
-			 
+			 con.close();
 			
 		}catch(Exception ex) {
 			message = ex.getMessage();
@@ -64,14 +64,44 @@ public class SignupDao {
 			st.setString(1, email);
 			st.setString(2, password);
 			ResultSet table = st.executeQuery();
+			System.out.println(table);
 			
+//			while(table.next()) {
+//				System.out.println(table.getString(1)+table.getString(2)+table.getString(3)+table.getString(4)+table.getString(5)+table.getString(6)+table.getString(7));
+//			}
 			if(table.next()) {
 				isValid = true;
 			}
+			con.close();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 		return isValid;
+	}
+	
+	
+	public String checkUser(String email, String password) {
+		ResultSet userType = null;
+		String userTypeCheck = "normal";
+		try {
+			Connection con = getConnection();
+			String query = "select userType from user where email = ? and password = ?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1, email);
+			st.setString(2, password);
+			userType = st.executeQuery();
+			
+			if(userType.next()) {
+				userTypeCheck = userType.getString(1);
+			}
+			
+					
+//			con.close();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			
+		}
+		return userTypeCheck;
 	}
 	
 	

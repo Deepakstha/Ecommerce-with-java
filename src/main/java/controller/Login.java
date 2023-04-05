@@ -17,21 +17,30 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
+		
+		
 		SignupDao database = new SignupDao();
 		boolean isValid =  database.checkLogin(email, password);
+		HttpSession session = request.getSession();
 		if(isValid) {
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("loggedInEmail", email);
-			response.sendRedirect("views/Home.jsp");
+			//admin
+			if(database.checkUser(email, password).equals("admin")) {
+				response.sendRedirect("views/Admin.jsp");
+			}else if (database.checkUser(email, password).equals("normal")) {
+				session.setAttribute("loggedInEmail", email);
+				response.sendRedirect("views/Home.jsp");
+			}
 			
-//			RequestDispatcher rd = request.getRequestDispatcher('StudentProfile.jsp');
-//			rd.forward(request, response);
+			//normal
+			
+			
+//			response.sendRedirect("views/Admin.jsp");
+			
 		}else {
+			session.setAttribute("message", "Login Failed");
 			response.sendRedirect("views/Login.jsp");
-//			RequestDispatcher rd = request.getRequestDispatcher('StudentProfile.jsp');
-//			request.setAttribute("LoginMessage", "Fail");
-//			rd.forward(request, response);
+			return;
 		}
 		
 	}

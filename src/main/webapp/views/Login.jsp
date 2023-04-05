@@ -9,7 +9,14 @@
 </head>
 <body>
 <div class="formcontainer">
-	<form action="registration" method="post">
+<%if(request.getAttribute("LoginMessage") != null){ %>
+<h1><%= request.getAttribute("LoginMessage")  %> </h1>
+<%} %>
+
+<div class="message">
+<%@include file="../components/message.jsp" %>
+</div>
+	<form action="../Login" method="post">
 		<h1>Login</h1>
 		<div class="email">
 			<label for="email">Email or Phone number</label>
