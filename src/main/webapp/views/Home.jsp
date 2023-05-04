@@ -8,5 +8,7 @@
 </head>
 <body>
 	<h1>Home page <%= session.getAttribute("loggedInEmail") %> Login Succesfull</h1>
+	
+	<a href="../view">Viewjsp</a>
 </body>
 </html>

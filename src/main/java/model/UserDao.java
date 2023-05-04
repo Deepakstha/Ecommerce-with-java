@@ -5,8 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class SignupDao {
+public class UserDao {
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		String url ="jdbc:mysql://localhost/ecommerce";
 		String username = "root";
@@ -15,17 +16,14 @@ public class SignupDao {
 		Connection con = DriverManager.getConnection(url,username,password);
 		return con;
 	}
-//	public Connection getConnection() {
-//		return null;
-//		
-//	}
 	
-	public String registerUser(String fullname, String phone, String email, String gender, String password) {
+//Registering User	
+	public String registerUser(String fullname, String phone, String email, String gender, String password, String image) {
 		
 		String message = "";
 		try {
 			Connection con = getConnection();
-			String query = "INSERT INTO user(fullname,phonenumber,email,gender,password) VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO user(fullname,phonenumber,email,gender,password,image) VALUES(?,?,?,?,?,?)";
 			PreparedStatement psmt = con.prepareStatement(query);
 
 			
@@ -36,6 +34,7 @@ public class SignupDao {
 			 psmt.setString(3, email);
 			 psmt.setString(4, gender);
 			 psmt.setString(5, password);
+			 psmt.setString(6, image);
 			 
 			 int rows = psmt.executeUpdate();
 			 if(rows >= 1) {
@@ -54,7 +53,7 @@ public class SignupDao {
 	}
 	
 	
-	
+//LoginUser	
 	public boolean checkLogin(String email, String password) {
 		boolean isValid = false;
 		try {
@@ -79,7 +78,7 @@ public class SignupDao {
 		return isValid;
 	}
 	
-	
+//Checking UserType
 	public String checkUser(String email, String password) {
 		ResultSet userType = null;
 		String userTypeCheck = "normal";
@@ -104,6 +103,4 @@ public class SignupDao {
 		return userTypeCheck;
 	}
 	
-	
-
 }

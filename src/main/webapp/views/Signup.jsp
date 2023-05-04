@@ -15,7 +15,7 @@
 </div>
 	
 	
-	<form action="../Signup" method="post">
+	<form action="../Signup" method="post" enctype="multipart/form-data">
 		<h1>Create an account</h1>
 		<div class="fullname">
 			<label for="fullname">Fullname</label>
@@ -44,6 +44,10 @@
 		<div class="re-password">
 			<label for="re-pass">Re-enter password</label>
 			<input type="password" name="repassword" id="re-pass" placeholder="re-enter password"/>
+		</div>
+		<div class="image">
+		<label>Upload Image</label>
+			<input type="file" name="image" required class="hide_file" />
 		</div>
 		<div>
 			<input type="submit" value="SignUp"/>

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns= {"/StudentProfile.jsp"})
+@WebFilter(urlPatterns= {"/Home.jsp","/Admin.jsp"})
 public class LoginFilter implements Filter {
 
 	@Override
@@ -29,7 +29,7 @@ public class LoginFilter implements Filter {
 		if(session.getAttribute("loggedInEmail") != null) {
 			chain.doFilter(request, response);
 		}else {
-			((HttpServletResponse)response).sendRedirect("Login.jsp");
+			((HttpServletResponse)response).sendRedirect("../Login.jsp");
 		}
 	}
 

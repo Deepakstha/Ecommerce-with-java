@@ -9,17 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.SignupDao;
+import model.AESEncryption;
+import model.UserDao;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String password = AESEncryption.encrypt(request.getParameter("password"));
 		
 		
 		
-		SignupDao database = new SignupDao();
+		UserDao database = new UserDao();
 		boolean isValid =  database.checkLogin(email, password);
 		HttpSession session = request.getSession();
 		if(isValid) {
