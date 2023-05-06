@@ -1,0 +1,158 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import = "java.sql.Connection" %>
+<%@ page import = "java.sql.DriverManager" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add Product</title>
+<link rel="stylesheet" href="../css/AddProduct.css">
+</head>
+<body>
+<style>
+    @charset "UTF-8";
+
+form > h1{
+	text-align: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding:40px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  width: 500px;
+  border-radius: 5px; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+/* Style the form labels */
+
+form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Style the form inputs */
+
+#title, #desc, #price, #discount, #quantity, #category{
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+.gender{
+	margin-bottom: 16px;
+}
+
+/* Style the form submit button */
+
+form input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  justify-content: center; 
+  cursor: pointer;
+  font-size: 16px;
+}
+
+ .image{
+  margin-bottom: 16px;
+
+}
+
+
+/* Change the button color on hover */
+
+form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Style error messages */
+
+</style>
+<div>
+<%@include file="../components/message.jsp" %>
+	<form action="../ProductOperationServlet" method="post" enctype="multipart/form-data">
+		<h1>Add Product</h1>
+		<input type="hidden" name="operation" value="addproduct"/>
+		<div class="title">
+			<label for="title">Product Title</label>
+			<input type="text" name="productTitle" id="title" placeholder="Enter Product Title" required />
+		</div>
+		<div class="desc">
+			<label for="desc">Product Description</label>
+			<textarea rows="" cols="" name="productDesc" id="desc"></textarea>
+		</div>
+		<div class="price">
+			<label for="price">Price</label>
+			<input type="number" name="price" id="price" required />
+		</div>
+		
+		<div class="discount">
+			<label for="discount">Discount</label>
+			<input type="number" name="discount" id="discount" required />
+		</div>
+		
+		<div class="quantity">
+			<label for="quantity">Quantity</label>
+			<input type="number" name="quantity" id="quantity" required />
+		</div>
+		
+		<div class="category">
+			<label>Category</label>
+			<select name="catId" id="category">
+			<% 
+			
+				try{
+					String url ="jdbc:mysql://localhost/ecommerce";
+					String username = "root";
+					String password = "";
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection(url,username,password);
+					
+					String query = "SELECT * FROM  category";
+					PreparedStatement st = con.prepareStatement(query);
+					ResultSet rs = st.executeQuery(query);
+					
+					while(rs.next()) {
+				%>
+						
+					<option value="<%= rs.getString("title") %>" > <%= rs.getString("title") %> </option>
+						
+				<%
+					}
+					
+
+				}catch (Exception e) {
+					// TODO Auto-generated catch block					
+				}
+			%>
+				
+			</select>
+		</div>
+		
+		<div class="image">
+		<label>Add Image</label>
+			<input type="file" name="image" required class="hide_file" />
+		</div>
+		
+		
+		
+		<div>
+			<input type="submit" value="Add Product"/>
+		</div>
+	</form>
+
+</div>
+</body>
+</html>
