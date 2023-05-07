@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>SignUp</title>
-<link rel="stylesheet" href="../css/Signup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Signup.css">
 </head>
 <body>
 <div class="formcontainer">

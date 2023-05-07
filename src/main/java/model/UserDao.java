@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 public class UserDao {
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		String url ="jdbc:mysql://localhost/ecommerce";
@@ -101,6 +103,77 @@ public class UserDao {
 			
 		}
 		return userTypeCheck;
+	}
+	
+	
+// user Profile
+	public UserDetails getUserDetails(String email) {
+		Connection con = null;
+		UserDetails userDetails = null;
+		try {
+			con = getConnection();
+			String query = "select * from user where email=?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1,email);
+			ResultSet table = st.executeQuery();
+			while (table.next()) {
+				String id = table.getString(1);
+				String fullname = table.getString(2);
+				String phonenumber = table.getString(3);
+				String email2 = table.getString(4);
+				String gender = table.getString(5);
+				String password = AESEncryption.decrypt(table.getString(6)) ;
+				String userType = table.getString(7);
+				String image = table.getString(8);
+
+				userDetails = new UserDetails(id, fullname, phonenumber, email2, gender, password, userType,
+						image);
+
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		return userDetails;
+		
+	}
+// Update Profile	
+	public String updateProfile(UserDetails userDetails) {
+		String message = "";
+		
+		try {
+
+			Connection con = getConnection();
+			String query = "UPDATE user SET fullname=?, phonenumber=?,email=?,gender=?,password=?,userType=?,image=? where id=?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, userDetails.getFullname() );
+			pst.setString(2, userDetails.getPhonenumber());
+			pst.setString(3, userDetails.getEmail() );
+			pst.setString(4, userDetails.getGender());
+			pst.setString(5, userDetails.getPassword());
+			pst.setString(6, userDetails.getUserType());
+			pst.setString(7, userDetails.getImage());
+			pst.setString(8, userDetails.getUserId() );
+
+			int rows = pst.executeUpdate();
+			if (rows >= 1) {
+				message = "Successfully Updated";
+			}
+			con.close();
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+			message = e.getMessage();
+		}
+		return message;
 	}
 	
 }

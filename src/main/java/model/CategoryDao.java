@@ -113,6 +113,48 @@ public class CategoryDao {
 		return productList;
 
 	}
+	
+// fetch product with category
+	public ArrayList<Products> fetchProductWithCategory(String category) {
+		ArrayList<Products> productList = new ArrayList<>();
+		Connection con = null;
+		try {
+			con = getConnection();
+			String query = "select * from products where category=?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1, category);
+			ResultSet table = st.executeQuery();
+			while (table.next()) {
+				String id = table.getString(1);
+				String productTitle = table.getString(2);
+				String productDescription = table.getString(3);
+				int price = table.getInt(4);
+				int discount = table.getInt(5);
+				int quantity = table.getInt(6);
+				String category1 = table.getString(7);
+				String image = table.getString(8);
+
+				Products product = new Products(id, productTitle, productDescription, price, discount, quantity,
+						category1, image);
+				productList.add(product);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		return productList;
+
+	}
 
 //Getting Product by id
 	public Products getProductRecordById(String id) {
@@ -210,5 +252,147 @@ public class CategoryDao {
 			}
 			return id;
 	}
+// Add to cart
+	public String addToCart(String id, String user) {
+		String message = "";
+		Connection con = null;
+		try {
+			 con = getConnection();
+			String query = "INSERT INTO cart(productId, user) VALUES(?,?)";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, id);
+			pst.setString(2, user);
+			int table = pst.executeUpdate();
+			message = "product added to cart!";
+			
+		}catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			message = "product not added to cart!";
+
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
+		return message;
+	}
+	
+// Buy Product
+	public String buyProduct(String id, String user) {
+		String message = "";
+		Connection con = null;
+		try {
+			 con = getConnection();
+			String query = "INSERT INTO orders(productId, user) VALUES(?,?)";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, id);
+			pst.setString(2, user);
+			int table = pst.executeUpdate();
+			message = "Product Ordered!";
+			
+		}catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			message = "Cannot Purchase!";
+
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
+		return message;
+	}
+	
+//Displaying Cart
+	public ArrayList<Orders> displayCart(String user) {
+		ArrayList<Orders> cartList = new ArrayList<>();
+		Connection con = null;
+		try {
+			con = getConnection();
+			String query = "SELECT cart.cartId,products.id,products.productTitle,products.productDescription, products.price,products.image FROM cart JOIN products ON cart.productId=products.id JOIN user ON cart.user=user.email WHERE user.email = ?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1,user);
+			ResultSet table = st.executeQuery();
+			while (table.next()) {
+				String orderId = table.getString(1);
+				String productId = table.getString(2);
+				String productTitle = table.getString(3);
+				String productDescription = table.getString(4);
+				String price = table.getString(5);
+				String image = table.getString(6);
+
+				Orders order = new Orders(orderId,productId, productTitle, productDescription, price, image);
+				cartList.add(order);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		return cartList;
+
+	}
+	
+// Displaying orders	
+	public ArrayList<Orders> displayOrderList(String user) {
+		ArrayList<Orders> orderList = new ArrayList<>();
+		Connection con = null;
+		try {
+			con = getConnection();
+			String query = "SELECT orders.id,products.id,products.productTitle,products.productDescription, products.price,products.image FROM orders JOIN products ON orders.productId=products.id JOIN user ON orders.user=user.email WHERE user.email = ?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1,user);
+			ResultSet table = st.executeQuery();
+			while (table.next()) {
+				String orderId = table.getString(1);
+				String productId = table.getString(2);
+				String productTitle = table.getString(3);
+				String productDescription = table.getString(4);
+				String price = table.getString(5);
+				String image = table.getString(6);
+
+				Orders order = new Orders(orderId,productId, productTitle, productDescription, price, image);
+				orderList.add(order);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		return orderList;
+
+	}
 
 }
+
+
+

@@ -23,7 +23,7 @@ public class UpdateProduct extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		String productId = request.getParameter("productId");
-		String productTitle = request.getParameter("productTitle");
+		String productTitle = request.getParameter("productTitle").trim();
 		String productDesc = request.getParameter("productDesc");
 		int price = Integer.parseInt(request.getParameter("price"));
 		int discount = Integer.parseInt(request.getParameter("discount"));
@@ -45,10 +45,13 @@ public class UpdateProduct extends HttpServlet {
 			String imagePath = getServletContext().getInitParameter("imagePath");
 			String fullPath = imagePath + relativePath;
 			image.write(fullPath);
+			session.setAttribute("message", "Product Updated!!");
+		}else {
+			session.setAttribute("message", "Failed to Updated!!");
 		}
 
-		session.setAttribute("message", "Product Updated!!");
-		response.sendRedirect("EditStudent?id="+productId);
+		
+		response.sendRedirect("ViewProduct");
 	}
 
 }

@@ -32,6 +32,7 @@
 			<input type="submit" value="Login"/>
 		</div>
 		<p>Don't have account <a href="Signup.jsp">Create an account</a> </p>
+		<a href="../Home">Go to Home page</a>
 	</form>
 </div>
 </body>

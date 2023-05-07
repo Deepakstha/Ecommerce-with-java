@@ -11,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Update Product</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/AddProduct.css">
 </head>
 <body>
 	<div>

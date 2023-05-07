@@ -18,7 +18,6 @@ public class DeleteProduct extends HttpServlet{
 //		database.deletingProduct(request.getParameter("id"));
 		String id = request.getParameter("id");
 		database.deletingProduct(id);
-		System.out.println(database.deletingProduct(id));
 		
 
 

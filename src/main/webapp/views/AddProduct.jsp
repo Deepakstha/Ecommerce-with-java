@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Add Product</title>
-<link rel="stylesheet" href="../css/AddProduct.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/AddProduct.css">
 </head>
 <body>
 <div>

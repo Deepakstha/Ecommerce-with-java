@@ -7,37 +7,11 @@
 <title>Product List</title>
 <!-- <link rel="stylesheet" href="../css/viewProductList.css">-->
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
- <style>
- .title{
-	text-align: center;
-	font: bold;
-}
-#products {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#products td, #products th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#products tr:nth-child(even){background-color: #f2f2f2;}
-
-#products tr:hover {background-color: #ddd;}
-
-#products th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AAaD;
-  color: white;
-}
- </style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/viewProductList.css">
 </head>
 <body>
 	<h1 class="title">All Products</h1>
+	<%@include file="../components/message.jsp" %>
 	<table id="products">
 	  <tr>
 	    <th>Product ID</th>

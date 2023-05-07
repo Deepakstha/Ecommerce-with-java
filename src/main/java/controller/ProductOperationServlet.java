@@ -46,7 +46,7 @@ public class ProductOperationServlet extends HttpServlet {
 				
 			}else if(operation.trim().equals("addproduct")) {
 				//Adding Product
-				String productTitle = request.getParameter("productTitle");
+				String productTitle = request.getParameter("productTitle").trim();
 				String productDesc = request.getParameter("productDesc");
 				String price = request.getParameter("price");
 				String discount = request.getParameter("discount");
@@ -64,9 +64,12 @@ public class ProductOperationServlet extends HttpServlet {
 					String imagePath = getServletContext().getInitParameter("imagePath");
 					String fullPath = imagePath+relativePath;
 					image.write(fullPath);
+					session.setAttribute("message","Product Added!!");
+				}else {
+					
 				}
 				
-				session.setAttribute("message","Product Added!!");
+				session.setAttribute("message","Product Not Added!!");
 				response.sendRedirect("views/AddProduct.jsp");
 				
 			}

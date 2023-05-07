@@ -21,7 +21,7 @@ public class Signup extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
-		String fullname = request.getParameter("fullname");
+		String fullname = request.getParameter("fullname").trim();
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		String gender = request.getParameter("gender");

@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 				response.sendRedirect("views/Admin.jsp");
 			}else if (database.checkUser(email, password).equals("normal")) {
 				session.setAttribute("loggedInEmail", email);
-				response.sendRedirect("views/Home.jsp");
+				response.sendRedirect("Home");
 			}
 			
 			//normal
