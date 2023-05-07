@@ -58,7 +58,7 @@ height:200px;
             </c:choose>   
             
             <li>
-            	<form action="">
+            	<form action="${pageContext.request.contextPath}/search">
             		<input type="search" name="search" placeholder="search" >
             		<input type="submit"  value="search">
             	</form>

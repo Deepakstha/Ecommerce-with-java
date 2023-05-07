@@ -392,6 +392,49 @@ public class CategoryDao {
 
 	}
 
+// Searching Products
+	public ArrayList<Products> displaySearchProduct(String search) {
+		ArrayList<Products> searchList = new ArrayList<>();
+		Connection con = null;
+		try {
+			con = getConnection();
+			String query = "SELECT * FROM products WHERE products.price like ? OR products.category like ? OR products.productTitle like ?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1,"%"+search+"%");
+			st.setString(2,"%"+search+"%");
+			st.setString(3,"%"+search+"%");
+			ResultSet table = st.executeQuery();
+			while (table.next()) {
+				String productId = table.getString(1);
+				String productTitle = table.getString(2);
+				String productDescription = table.getString(3);
+				int price = table.getInt(4);
+				int discount = table.getInt(5);
+				int quantity = table.getInt(6);
+				String category = table.getString(7);
+				String image = table.getString(8);
+
+				Products searchs = new Products(productId, productTitle, productDescription, price, discount,quantity,category, image);
+				searchList.add(searchs);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		return searchList;
+
+	}
+
 }
 
 
