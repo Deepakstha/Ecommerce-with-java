@@ -15,7 +15,7 @@
 </div>
 	
 	
-	<form action="../Signup" method="post" enctype="multipart/form-data">
+	<form class="form" action="../Signup" method="post" enctype="multipart/form-data">
 		<h1>Create an account</h1>
 		<div class="fullname">
 			<label for="fullname">Fullname</label>
@@ -50,7 +50,7 @@
 			<input type="file" name="image" required class="hide_file" />
 		</div>
 		<div>
-			<input type="submit" value="SignUp"/>
+			<input type="submit" class="submit" value="SignUp"/>
 		</div>
 		<p>Already have an account? <a href="Login.jsp">Login</a> </p>
 	</form>

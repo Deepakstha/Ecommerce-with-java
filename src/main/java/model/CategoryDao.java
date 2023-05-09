@@ -268,7 +268,12 @@ public class CategoryDao {
 		}catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			message = "product not added to cart!";
+			if(user == null) {
+				message = "Please Login Fist !";
+			}else {
+				message = "product not added to cart!";
+			}
+			
 
 		} finally {
 			try {
@@ -299,7 +304,12 @@ public class CategoryDao {
 		}catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			message = "Cannot Purchase!";
+			if(user == null) {
+				message = "Please Login to Buy!";
+			}else {
+				message = "Cannot Purchase!";
+			}
+			
 
 		} finally {
 			try {

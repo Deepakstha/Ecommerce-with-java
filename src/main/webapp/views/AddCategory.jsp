@@ -10,7 +10,7 @@
 <body>
 <div>
 <%@include file="../components/message.jsp" %>
-	<form action="../ProductOperationServlet" method="post">
+	<form class="form" action="../ProductOperationServlet" method="post">
 		<h1>Add Category</h1>
 		<input type="hidden" name="operation" value="addcategory"/>
 		<div class="title">
@@ -25,7 +25,7 @@
 		
 		
 		<div>
-			<input type="submit" value="Add Category"/>
+			<input type="submit" class="submit" value="Add Category"/>
 		</div>
 	</form>
 </div>

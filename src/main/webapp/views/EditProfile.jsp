@@ -7,13 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Edit Profile</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Signup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/EditProfile.css">
 </head>
 <body>
 <%@include file="nav.jsp" %>
-	<form action="${pageContext.request.contextPath}/UpdateProfile"
+	<form class="form" action="${pageContext.request.contextPath}/UpdateProfile"
 		method="post" enctype="multipart/form-data">
-		<h1>Update Product</h1>
+		<h1>Update Profile</h1>
 		<input type="text" name="userId" id="id"
 			value="${userDetails.userId }" readonly />
 		<div class="fullname">
@@ -55,7 +55,7 @@
 		</div>
 
 		<div>
-			<input type="submit" value="Update"/>
+			<input type="submit" class="submit" value="Update Profile"/>
 		</div>
 	</form>
 	<script>

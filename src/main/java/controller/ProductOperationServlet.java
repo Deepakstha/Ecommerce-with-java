@@ -66,11 +66,12 @@ public class ProductOperationServlet extends HttpServlet {
 					image.write(fullPath);
 					session.setAttribute("message","Product Added!!");
 				}else {
+					session.setAttribute("message","Product Not Added!!");
 					
 				}
-				
-				session.setAttribute("message","Product Not Added!!");
 				response.sendRedirect("views/AddProduct.jsp");
+				
+				
 				
 			}
 			

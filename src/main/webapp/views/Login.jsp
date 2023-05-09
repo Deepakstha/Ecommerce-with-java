@@ -16,7 +16,7 @@
 <div class="message">
 <%@include file="../components/message.jsp" %>
 </div>
-	<form action="../Login" method="post">
+	<form class="form"  action="../Login" method="post">
 		<h1>Login</h1>
 		<div class="email">
 			<label for="email">Email or Phone number</label>
@@ -29,7 +29,7 @@
 		</div>
 		
 		<div>
-			<input type="submit" value="Login"/>
+			<input type="submit" class="submit" value="Login"/>
 		</div>
 		<p>Don't have account <a href="Signup.jsp">Create an account</a> </p>
 		<a href="../Home">Go to Home page</a>

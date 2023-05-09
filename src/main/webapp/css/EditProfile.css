@@ -2,7 +2,9 @@
 
 form > h1{
 	text-align: center;
+
 }
+
 .form {
   display: flex;
   flex-direction: column;
@@ -12,13 +14,13 @@ form > h1{
   font-size: 16px;
   width: 500px;
   border-radius: 5px; 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
   
 }
 
 /* Style the form labels */
 
-form label {
+.form label {
   margin-bottom: 8px;
   font-weight: bold;
 }
@@ -38,7 +40,7 @@ form label {
 
 /* Style the form submit button */
 
-form input[type="submit"] {
+.form .submit {
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
@@ -51,7 +53,7 @@ form input[type="submit"] {
 
 /* Change the button color on hover */
 
-form input[type="submit"]:hover {
+.form .submit:hover {
   background-color: #45a049;
 }
 

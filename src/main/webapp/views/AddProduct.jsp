@@ -15,7 +15,7 @@
 <body>
 <div>
 <%@include file="../components/message.jsp" %>
-	<form action="../ProductOperationServlet" method="post" enctype="multipart/form-data">
+	<form class="form"  action="../ProductOperationServlet" method="post" enctype="multipart/form-data">
 		<h1>Add Product</h1>
 		<input type="hidden" name="operation" value="addproduct"/>
 		<div class="title">
@@ -82,7 +82,7 @@
 		
 		
 		<div>
-			<input type="submit" value="Add Product"/>
+			<input type="submit" class="submit" value="Add Product"/>
 		</div>
 	</form>
 

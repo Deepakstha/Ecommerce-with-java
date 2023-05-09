@@ -15,29 +15,31 @@
 <body>
 
 	<div class="container">
+	<%= session.getAttribute("loggedInEmail") %>
+	<button><a href="../Logout">Log Out</a> </button>
     <h1>Welcome to Admin panel page</h1>
     <div class="row">
       <div class="col">
         <div class="box">
-          <img src="images/add category.png" alt="Add Category Icon">
+          <img src="${pageContext.request.contextPath}/image/admin/add category.png" alt="Add Category Icon">
            <a href="${pageContext.request.contextPath}/views/AddCategory.jsp"> <button >Add Category </button></a> 
         </div>
       </div>
       <div class="col">
         <div class="box">
-          <img src="images/Add Product.png" alt="Add Product Icon">
+          <img src="${pageContext.request.contextPath}/image/admin/Add Product.png" alt="Add Product Icon">
           <a href="${pageContext.request.contextPath}/views/AddProduct.jsp"> <button>Add Product</button></a>
         </div>
       </div>
       <div class="col">
         <div class="box">
-          <img src="images/Add Product.png" alt="View Product Icon">
+          <img src="${pageContext.request.contextPath}/image/admin/view Product.png" alt="View Product Icon">
           <a href="${pageContext.request.contextPath}/ViewProduct"> <button>View Product</button></a>
         </div>
       </div>
       <div class="col">
         <div class="box">
-          <img src="images/view order.png" alt="View Orders Icon">
+          <img src="${pageContext.request.contextPath}/image/admin/view order.png" alt="View Orders Icon">
           <form action="${pageContext.request.contextPath}/DisplayOrdersList">
           	<select name="userOrders" id="user">
 			<% 

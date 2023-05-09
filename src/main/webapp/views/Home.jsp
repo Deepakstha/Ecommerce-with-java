@@ -30,6 +30,10 @@
 width:300px;
 height:200px;
 }
+.browsCat{
+margin-left:39%;
+}
+
 </style>
 </head>
 <body>
@@ -40,9 +44,7 @@ height:200px;
         <a href="#" class="logo"><img src="${pageContext.request.contextPath}/image/logo.png" alt=""></a>
 
         <ul class="navmenu">
-        	
             <li><a href="Home">Home</a></li>
-            <li><a href="">Products</a></li>
             <li><a href="${pageContext.request.contextPath}/DisplayCart">View Cart</a></li>
             <li><a href="${pageContext.request.contextPath}/DisplayOrdersList">View Orders</a></li>
             <li><a href="${pageContext.request.contextPath}/EditProfile">Edit profile</a></li>
@@ -57,10 +59,10 @@ height:200px;
             	</c:otherwise>
             </c:choose>   
             
-            <li>
+            <li class="searchList">
             	<form action="${pageContext.request.contextPath}/search">
-            		<input type="search" name="search" placeholder="search" >
-            		<input type="submit"  value="search">
+            		<input type="search" class="search" name="search" placeholder="search" >
+            		<input type="submit"  class="main-btn" value="search">
             	</form>
             </li>        
             
@@ -100,16 +102,16 @@ height:200px;
     </section>
     <br/>
     <div class="center-text">
-            <h2>Our <span>Category</span></h2>
+            <h2>Browse <span>Category</span></h2>
         </div>
-        <div>
+      <!--   <div class="browsCat">
         <a href="${pageContext.request.contextPath}/Home?catagory=Men">Men</a>
         <a href="${pageContext.request.contextPath}/Home?catagory=Women">Women</a>
         <a href="${pageContext.request.contextPath}/Home?catagory=Kids">Kids</a>
-        </div>
-        <form method="get" style="display:flex; gap:8px;">
-        <div class="category">
-			<label>Category</label>
+        </div> -->
+        <form method="get" style="display:flex; gap:8px;" class="browsCat">
+        <div class="center-text">
+			<label>Select Category: </label>
 			<select name="catagory" id="category">
 			<% 
 			
@@ -140,7 +142,7 @@ height:200px;
 				
 			</select>
 		</div>
-		<input type="submit" value="search"/>
+		<input type="submit" class="main-btn" value="search"/>
         </form>
     <br/>
     <div class="center-text">

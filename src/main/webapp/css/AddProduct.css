@@ -3,7 +3,7 @@
 form > h1{
 	text-align: center;
 }
-form {
+.form {
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -38,7 +38,7 @@ form label {
 
 /* Style the form submit button */
 
-form input[type="submit"] {
+form .submit {
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
@@ -57,7 +57,7 @@ form input[type="submit"] {
 
 /* Change the button color on hover */
 
-form input[type="submit"]:hover {
+form .submit:hover {
   background-color: #45a049;
 }
 

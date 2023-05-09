@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home </title>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Jost', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+}
+.logo img{
+    max-width: 120px;
+    height: auto;
+}
+
+.navmenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  background-color: #fdfdfd;
+}
+
+.navmenu li {
+  margin-right: 20px;
+}
+
+.navmenu li:last-child {
+  margin-right: 0;
+}
+
+.navmenu li a {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navmenu li a:hover {
+  color: #000;
+}
+
+.search-bar {
+  margin-left: 20px;
+}
+
+.search-bar form {
+  display: flex;
+}
+
+.search-bar input[type="search"] {
+  padding: 1px 20px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.search-bar input[type="submit"] {
+    margin: 10px;
+	display: inline-block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: 2px solid #111;
+    padding: 12px 25px;
+    transition: all .42s ease;
+}
+.search-bar input[type="submit"]:hover {
+  background-color: #000;
+    color: #fff;
+}
+section{
+    padding: 5% 5%;
+}
+.main-home{
+    width: 100%;
+    height: 100%;
+    background-image: url(image/hero2.jpg);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+.main-text h5{
+    color: #EE1C47;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.main-text h1{
+    color: #000;
+    font-size: 65px;
+    text-transform: capitalize;
+    line-height: 1.1;
+    font-weight: 600;
+    margin: 6px 0 10px;
+}
+.main-text p{
+    color: #333c56;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+.main-btn{
+    margin: 10px;
+	display: inline-block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: 2px solid #111;
+    padding: 12px 25px;
+    transition: all .42s ease;
+}
+.main-btn:hover{
+    background-color: #000;
+    color: #fff;
+}
+.main-btn i{
+    vertical-align: middle;
+}
+.down-arrow{
+    position: absolute;
+    top: 85%;
+    right: 11%;
+}
+.down i{
+    font-size: 30px;
+    color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 50px;
+    padding: 12px 12px;
+}
+.down i:hover{
+    background-color: #2c2c2c;
+    color: #fff;
+    transition: all .42s ease;
+}
+header.sticky{
+    background: #fff;
+    padding: 20px 10%;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+}
+
+/* trending-section-css */
+.center-text h2{
+    color: #111;
+    font-size: 28px;
+    text-transform: capitalize;
+    text-align: center;
+	margin-top: 20px;
+    margin-bottom: 30px;
+}
+.center-text span{
+    color: #EE1C47;
+}
+.products{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    gap: 2rem;
+}
+.row{
+    position: relative;
+    transition: all .40s;
+}
+.row img{
+    width: 100%;
+    height: auto;
+    transition: all .40s;
+}
+.row img:hover{
+    transform: scale(0.9);
+}
+.product-text h5{
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #27b737;
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+
+/* Responsive-css */
+@media(max-width:890px){
+    header{
+        padding: 20px 3%;
+        transition: .4s;
+    }
+}
+@media(max-width:630px){
+    .main-text h1{
+        font-size: 50px;
+        transition: .4s;
+    }
+    .main-text p{
+        font-size: 18px;
+        transition: .4s;
+    }
+    .main-btn{
+        padding: 10px 20px;
+        transition: .4s;
+    }
+}
+
+@media(max-width:750px){
+    .navmenu{
+        position: absolute;
+        top: 100%;
+        right:-100%;
+        width: 300px;
+        height: 130vh;
+        background: #33a14b;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 120px 30px;
+        transition: all .42s;
+    }
+    .navmenu a{
+        display: block;
+        margin: 18px 0;
+		padding: 100px;
+    }
+    .navmenu.open{
+        right: 0;
+    }
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.box {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.category label {
+  font-size: 16px;
+  color: #333;
+}
+
+.category select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.category select:focus {
+  border-color: #000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.grid-item {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.grid-item p {
+  margin: 10px 0;
+}
+
+
+</style>
+</head>
+<body>
+
+
+	<header>
+	
+        <a href="#" class="logo"><img src="${pageContext.request.contextPath}/image/logo.png" alt=""></a>
+
+        <ul class="navmenu">
+        	
+            <li><a href="Home">Home</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="${pageContext.request.contextPath}/DisplayCart">View Cart</a></li>
+            <li><a href="${pageContext.request.contextPath}/DisplayOrdersList">View Orders</a></li>
+            <li><a href="${pageContext.request.contextPath}/EditProfile">Edit profile</a></li>
+ 
+            
+            <li class="search-bar">
+				<form action="">
+				  <input type="search" name="search" placeholder="Search">
+				  <input  type="submit" value="Search">
+				</form>
+			</li>
+			<c:choose>
+            	<c:when test="${sessionScope.loggedInEmail == null }">
+            		<li><a href="${pageContext.request.contextPath}/views/Login.jsp">Log In</a></li>
+            		<li><a href="${pageContext.request.contextPath}/views/Signup.jsp">Sign Up</a></li>
+            	</c:when>
+            	<c:otherwise>
+            		<li><a href="Logout">Log Out</a></li>
+            	</c:otherwise>
+            </c:choose>         
+            
+        </ul>
+
+        <c:choose>
+            	<c:when test="${sessionScope.loggedInEmail == null }">
+
+            	</c:when>
+            	<c:otherwise>
+            		        <h4>You are logedin as <%= session.getAttribute("loggedInEmail") %></h4>
+            	</c:otherwise>
+            </c:choose>    
+
+    </header>
+	<%@include file="../components/message.jsp" %>
+	
+	<section class="main-home">
+        <div class="main-text">
+            <h5>Winter Collection</h5>
+            <h1>New Winter <br> Collection 2022</h1>
+            <p>There's Nothing like Trend</p>
+
+            <a href="#" class="main-btn">Shop Now</a>
+        </div>
+    </section>
+    <br/>
+    <div class="center-text">
+  <h2>Browse <span>Category</span></h2>
+</div>
+
+<div class="container">
+	
+	<div class="box">
+		<div>
+			<a href="${pageContext.request.contextPath}/Home?catagory=Men">Men</a>
+			<a href="${pageContext.request.contextPath}/Home?catagory=Women">Women</a>
+			<a href="${pageContext.request.contextPath}/Home?catagory=Kids">Kids</a>
+		  </div>
+	  <form method="get">
+		<div class="form-container">
+		  <div class="category">
+			<label for="category">Select a Category:</label>
+			<select name="category" id="category">
+			  <% 
+				try {
+				  String url ="jdbc:mysql://localhost/ecommerce";
+				  String username = "root";
+				  String password = "";
+				  Class.forName("com.mysql.jdbc.Driver");
+				  Connection con = DriverManager.getConnection(url,username,password);
+				  String query = "SELECT * FROM category";
+				  PreparedStatement st = con.prepareStatement(query);
+				  ResultSet rs = st.executeQuery(query);
+				  while(rs.next()) {
+			  %>
+					<option value="<%= rs.getString("title") %>"><%= rs.getString("title") %></option>
+			  <%
+				  }
+				} catch (Exception e) {
+				  // TODO Auto-generated catch block
+				}
+			  %>
+			</select>
+		  </div>
+		  <button type="submit" class="main-btn">Search</button>
+		</div>
+	  </form>
+	</div>
+  </div>
+
+  <div class="container">
+	<div class="center-text">
+	  <h2>Our <span>products</span></h2>
+	</div>
+	<div class="grid-container">
+	  <c:forEach var="prod" items="${productList}">
+		<div class="grid-item">
+		  <img src="image/${prod.image}" alt="${prod.productTitle}">
+		  <p>${prod.productTitle}</p>
+		  <p>${prod.productDescription}</p>
+		  <p>$ ${prod.price}</p>
+		  <p>Qnt: ${prod.quantity}</p>
+		  <p>${prod.category}</p>
+		  <a href="${pageContext.request.contextPath}/AddToCart?id=${prod.productId}" class="main-btn">Add to Cart<i class='bx bx-right-arrow-alt'></i></a>
+		  <a href="${pageContext.request.contextPath}/BuyProduct?id=${prod.productId}" class="main-btn">Buy</a>
+		</div>
+	  </c:forEach>
+	</div>
+  </div>
+</body>
+</html>

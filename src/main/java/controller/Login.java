@@ -27,6 +27,7 @@ public class Login extends HttpServlet {
 			
 			//admin
 			if(database.checkUser(email, password).equals("admin")) {
+				session.setAttribute("loggedInEmail", email);
 				response.sendRedirect("views/Admin.jsp");
 			}else if (database.checkUser(email, password).equals("normal")) {
 				session.setAttribute("loggedInEmail", email);

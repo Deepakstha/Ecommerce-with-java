@@ -38,6 +38,21 @@ img{
     transform: scale(1.1);
     color: #EE1C47;
 }
+.main-btn{
+    display: inline-block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: 2px solid #111;
+    padding: 12px 25px;
+    transition: all .42s ease;
+}
+.main-btn:hover{
+    background-color: #000;
+    color: #fff;
+}
+
 </style>
 
 
@@ -46,7 +61,6 @@ img{
 <ul class="navmenu">
         	
             <li><a href="Home">Home</a></li>
-            <li><a href="">Products</a></li>
             <li><a href="${pageContext.request.contextPath}/DisplayCart">View Cart</a></li>
             <li><a href="${pageContext.request.contextPath}/DisplayOrdersList">View Orders</a></li>
             <li><a href="${pageContext.request.contextPath}/EditProfile">Edit profile</a></li>
@@ -61,9 +75,14 @@ img{
             	</c:otherwise>
             </c:choose>     
             <li>
-            	<form action="">
-            		<input type="search" name="search" placeholder="search" >
-            		<input type="submit"  value="search">
+            	<form action="" style="gap: 5px;">
+            		<input type="search" name="search" style="border:1px solid;
+	border-radius:3px;
+	width:200px;
+	height:50px;
+	padding-left:10px;
+	font-size:16px;" placeholder="search" >
+            		<button type="submit" class="main-btn"  > Search</button>
             	</form>
             </li>       
             
